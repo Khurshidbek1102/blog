@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{post.title}}{% endblock title %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card p-5 ">
+        
+        <h2 class="fs-1 text-center">post title: <span class='badge bg-primary'>{{post.title}}</span></h2>
+        
+        <h3 class="text-center">Post author <span class="badge bg-success">{{post.author}}</span> </h3>
+        <h3 class="text-center">Post author <span class="badge bg-dark-subtle text-dark">{{post.publish}}</span> </h3>
+        <div class="fs-2 bg-light border border-1 rounded p-5">
+            <p class=" badge bg-secondary ">post body</p>
+            <p class="fs-3">{{post.body}}</p>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
