@@ -14,6 +14,27 @@
             <p class="fs-3">{{post.body}}</p>
             
         </div>
+        <div class="comments-box col-10 me-auto">
+            <div class="comment-list card m-1 p-5">
+                <h2>Comments to this post</h2>
+                {% for comment in comments %}
+                    <div class="comment-container border border-1 bg-warning rounded m-2 p-3">
+                        <h2 class="text-decoration-underline fs-6">{{comment.user.username}} <span class="badge text-primary">{{comment.created}}</span></h2>
+                        <p class="fs-4">{{comment.body}}</p>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <div class="comment-form">
+                <form method="post" action="{% url 'blog:post_comment' %}" class="form" >
+                    {% csrf_token %}
+                    <input type='hidden' value={{post.id}} name='post_id'>
+                    <input type='hidden' value={{request.path}} name='path_url'>
+                    {{comment_form.as_p}}
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
